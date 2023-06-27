@@ -1,0 +1,649 @@
+
+Angular FIS traning
+-----------------------------
+https://fisglobal-my.sharepoint.com/:v:/r/personal/jitendra_behera_fisglobal_com/Documents/Recordings/Training%20_%20Angular%2013_UI%20UX%20_%204%20to%2015%20Jul.%2722-20220704_102240-Meeting%20Recording.mp4?csf=1&web=1&e=4FjnDR
+
+Angular: 
+https://www.digitalocean.com/community/tutorials/angular-viewchild-access-component  -- child component access proprites
+@Contentchild ng-content 
+
+https://www.tektutorialshub.com/angular-tutorial/
+
+https://howtodoinjava.com/spring-cloud/spring-cloud-service-discovery-netflix-eureka/ 
+
+https://blog.logrocket.com/reactive-form-controls-form-groups-angular/  
+
+https://www.techiediaries.com/angular/angular-9-8-crud-example-and-tutorial/
+
+Angular json server configuration :
+---------------------------------
+start : json-server --watch data.json
+
+
+export interface Schedule {
+    id: number;
+    title: string;
+    start: Date;
+    end: Date;
+    created_by: string;
+    event_skaper: string;
+    event_booker: string;
+  }
+In my calendar.component.ts
+
+ schedule$!: Observable<Schedule[]>;
+
+ public getCalendar(): any {
+    this.apiService.getCalendar().subscribe(
+    (data: any)  => {
+      this.schedule$ = data;
+      console.log(this.schedule$);
+      // return this.schedule$;
+    })
+    console.log(this.schedule$);
+    // return this.schedule$;
+  }
+
+https://auth0.com/blog/angular-2-series-part-3-using-http/
+
+
+
+SpringBoot
+-----------------------------------------------------------------------------
+https://github.com/learning-zone/java-interview-questions
+https://github.com/learning-zone/java-interview-questions/blob/master/java8-questions.md
+https://www.bezkoder.com/spring-boot-jpa-crud-rest-api/ --  JPA
+https://www.javainuse.com/spring/jpa
+https://www.javatpoint.com/spring-boot-crud-operations
+
+
+https://devwithus.com/build-rest-api-with-spring-boot-from-scratch/
+Exception handling
+----------------------------
+
+https://www.geeksforgeeks.org/spring-boot-exception-handling/  
+https://dzone.com/articles/best-practice-for-exception-handling-in-spring-boo
+
+Annotations
+---------------------
+https://projectlombok.org/features/Data
+https://javabydeveloper.com/lombok-data-annotation/
+
+@Data generates all the boilerplate that is normally associated with simple POJOs (Plain Old Java Objects) and beans:
+
+getter methods for all fields,
+setter methods for all non-final fields,
+ appropriate toString(),
+appropriate equals() and
+hashCode() implementations that involve the fields of the class,
+and a constructor that initializes all final fields,
+as well as all non-final fields with no initializer that have been marked with @NonNull, in order to ensure the field is never null.
+
+https://www.netsurfingzone.com/spring/deploy-spring-boot-war-in-jboss-eap-server/
+https://thepracticaldeveloper.com/how-to-deploy-a-spring-boot-war-in-wildfly-jboss/
+
+https://dzone.com/articles/deploying-spring-boot-app-to-jboss-wildfly
+
+What is spring boot2?
+Spring Boot makes it easy to create stand-alone, production-grade Spring based Applications that you can "just run". We take an opinionated view of the Spring platform and third-party libraries so you can get started with minimum fuss. Most Spring Boot applications need minimal Spring configuration.
+
+Spring Boot 2.0
+Let's have a sneak peek at Spring Boot 2.0.
+
+What's New
+          Infrastructure Upgrade
+          Spring Framework 5
+What's Changed
+          Configuration Properties
+          Gradle Plugin
+          Actuators endpoints
+What's Evolving
+          Security
+          Metrics
+The pivotal team has upgraded the infrastructure in which the following tools are involved:
+
+Supports Java 8 or above versions
+Supports Apache Tomcat 8 or above versions
+Supports Thymeleaf 3
+Supports Hibernate 5.2
+
+Spring Initializr
+-------------------------------
+
+Spring Initializr is a Web-based tool that generates the Spring Boot project structure. The spelling mistake in initializr is inspired by initializr. Modern IDEs have integrated Spring Initializr that provides the initial project structure. It is very easy for the developers to select the necessary configuration for their projects. The Spring Initializr tool takes care of the following configuration for any Spring-based project. 
+
+Build tool(Maven or Gradle) to build the application.
+Spring Boot version(Dependencies are added based on the version).
+Dependencies required for the project.
+Language and its version.
+Project Metadata like name, packaging (Jar or War), package name etc.
+https://www.javadevjournal.com/spring-boot/spring-initializr/
+Project structure.
+Dependencies required to start the work.
+build script (Maven or Gradle) to build the application.
+Language and version (Initializr will add correct dependencies based on the version)
+packaging (war or jar)
+
+
+Staters 
+
+----
+
+<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+
+1) Context path and port number change 
+
+server.port = 9080
+server.servlet.context-path=/springbootrest
+
+
+2)Spring Boot and Content Negotiation - XML and JSON Representations 
+
+        <dependency>
+			<groupId>com.fasterxml.jackson.dataformat</groupId>
+			<artifactId>jackson-dataformat-xml</artifactId>
+		</dependency>
+		
+		
+Problem with Spring Based Applications
+
+If you look at any Spring-based application, such as a Spring MVC application You need to configure a lot of components within it
+lik dispatch servelt and views and  also end up configuring a data source and a transaction manager:
+
+
+Why Do You Need Spring Boot?
+1. Reducing Project Start-up Time
+Spring Boot reduces the startup time in creating new projects. You can add frameworks and Spring Boot automatically 
+configures them for you. In the world of microservices, as we create a number of smaller microservices instead of a large monolith, Spring Boot helps us start up projects quickly.
+2. Spring Boot Provides Starter Projects
+
+Spring Boot And Version Management: Spring Boot also takes the responsibility of managing versions of dependent libraries.
+
+
+Spring Boot And Frameworks
+Spring Boot takes care of the typical things you normally do in Sprint 0 of a project. In addition, Spring Boot helps the developer in the following areas:
+
+Integration with several frameworks
+Configuration management
+Logging
+Transaction management
+Error/Exception handling
+Monitoring and health checks
+Integrating unit testing and mocking frameworks
+
+
+* https://spring.io/guides/gs/convert-jar-to-war/
+
+Q : How do we connect to a external database like MSSQL or oracle?
+Let’s consider one of those as an example - MySQL
+
+Step 1 - Add dependency for mqsql connector to pom.xml
+<dependency>
+    <groupId>mysql</groupId>
+    <artifactId>mysql-connector-java</artifactId>
+</dependency>
+Step 2 - Remove H2 Dependency from pom.xml
+Or atleast make its scope as test
+
+<!--
+<dependency>
+    <groupId>com.h2database</groupId>
+    <artifactId>h2</artifactId>
+    <scope>test</scope>
+</dependency>
+-->
+
+Step 3 - Setup your My SQL Database
+For more check out - https://github.com/in28minutes/jpa-with-hibernate#installing-and-setting-up-mysql
+Step 4 - Configure your connection to My SQL Database
+Con
+
+What Are Spring Projects?
+
+Spring Boot
+Spring Cloud
+Spring Data
+Spring Integration
+Spring Batch
+Spring Security
+Spring HATEOAS
+
+Spring Boot Starters:
+
+spring-boot-starter-web-services : For building applications exposing SOAP Web Services
+spring-boot-starter-web - Build Web applications & RESTful applications
+spring-boot-starter-test - Write great Unit and Integration Tests
+spring-boot-starter-jdbc - Traditional JDBC Applications
+spring-boot-starter-hateoas - Make your services more RESTful by adding HATEOAS features
+spring-boot-starter-security - Authentication and Authorization using Spring Security
+spring-boot-starter-data-jpa - Spring Data JPA with Hibernate
+spring-boot-starter-cache - Enabling Spring Framework’s caching support
+spring-boot-starter-data-rest - Expose Simple REST Services using Spring Data REST
+
+What is HATEOAS?
+
+HATEOAS stands for “Hypermedia as the engine of application state”
+
+For example, if you go to a student page, you will see
+
+Student profile
+Links to Edit and Delete Student details
+Links to see details of other students
+Link to see details of the courses and grades of the student
+
+HATEOAS brings the same concepts to RESTful Web Services.
+
+When some details of a resource are requested, you will provide the resource details as well as details of related resources and the possible actions you can perform on the resource. For example, when requesting information about a facebook user, a REST service can return the following
+
+User details
+Links to get his recent posts
+Links to get his recent comments
+Links to retrieve his friend’s list.
+
+
+Need for Profiles
+Enterprise application development is complex. You have multiple environments
+
+Dev
+QA
+Stage
+Production
+You want to have different application configuration in each of the environments.
+
+Profiles help to have different application configuration for different environments.
+
+Logging
+---------------
+
+In application.properties, we can use the “logging.level” prefix to set logging levels.
+
+logging.level.some.package.path=DEBUG
+logging.level.some.other.package.path=ERROR
+
+Root logging level can be configured as shown below
+
+logging.level.root=WARN
+
+Configuring a Log File 
+------- 
+logging.file=\path_to\logfile.log
+
+
+First, we can set our logging level within our VM Options:
+
+-Dlogging.level.org.springframework=TRACE 
+-Dlogging.level.com.baeldung=TRACE
+Alternatively, if we're using Maven, we can define our log settings via the command line:
+
+mvn spring-boot:run 
+  -Dspring-boot.run.arguments=--logging.level.org.springframework=TRACE,--logging.level.com.baeldung=TRACE
+
+ Log Format
+-----------------
+Date and Time: Millisecond precision and easily sortable.
+Log Level: ERROR, WARN, INFO, DEBUG, or TRACE.
+Process ID.
+A --- separator to distinguish the start of actual log messages.
+Thread name: Enclosed in square brackets (may be truncated for console output).
+Logger name: This is usually the source class name (often abbreviated).
+The log message.
+
+2019-03-05 10:57:51.253  INFO 45469 --- [ost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1358 ms
+
+* Logback does not have a FATAL level. It is mapped to 
+
+
+Enable Debug Logging for Hibernate and Queries
+------------------------------------------------------
+Before we go any further, let’s enable logging for all queries generated by Hibernate. We also enable statistics and format generated sql statements.
+
+/src/main/resources/application.properties
+#Turn Statistics on
+spring.jpa.properties.hibernate.generate_statistics=true
+logging.level.org.hibernate.stat=debug
+# Show all queries
+spring.jpa.show-sql=true
+spring.datasource.url=jdbc:h2:mem:testdb
+spring.data.jpa.repositories.bootstrap-mode=default
+spring.jpa.properties.hibernate.format_sql=true
+logging.level.org.hibernate.type=trace
+
+
+Auto-configuration
+----------------------
+Spring Boot auto-configuration attempts to automatically configure your Spring application based on the jar dependencies that you have added. For example, if HSQLDB is on your classpath, and you have not manually configured any database connection beans, then Spring Boot auto-configures an in-memory database.
+
+You need to opt-in to auto-configuration by adding the @EnableAutoConfiguration or @SpringBootApplication annotations to one of your @Configuration classes.
+You should only ever add one @SpringBootApplication or @EnableAutoConfiguration annotation. We generally recommend that you add one or the other to your primary 
+@Configuration class only.
+
+Disabling Specific Auto-configuration Classes
+If you find that specific auto-configuration classes that you do not want are being applied, you can use the exclude attribute of @SpringBootApplication to disable them, as shown in the following example:
+
+JavaKotlin
+@SpringBootApplication(exclude = { DataSourceAutoConfiguration.class })
+public class MyApplication {
+
+}
+
+If the class is not on the classpath, you can use the excludeName attribute of the annotation and specify the fully qualified name instead. 
+If you prefer to use @EnableAutoConfiguration rather than @SpringBootApplication, exclude and excludeName are also available. Finally, you can also control 
+the list of auto-configuration classes to exclude by using the spring.autoconfigure.exclude property.
+
+Lazy Initialization
+--------------------------
+
+SpringApplication allows an application to be initialized lazily. When lazy initialization is enabled, beans are created as they are needed rather than during application startup. As a result, enabling lazy initialization can reduce the time that it takes your application to start. In a web application, enabling lazy initialization will result in many web-related beans not being initialized until an HTTP request is received.
+
+A downside of lazy initialization is that it can delay the discovery of a problem with the application. If a misconfigured bean is initialized lazily, a failure will no longer occur during startup and the problem will only become apparent when the bean is initialized. Care must also be taken to ensure that the JVM has sufficient memory to accommodate all of the application’s beans and not just those that are initialized during startup. For these reasons, lazy initialization is not enabled by default and it is recommended that fine-tuning of the JVM’s heap size is done before enabling lazy initialization.
+
+Lazy initialization can be enabled programmatically using the lazyInitialization method on SpringApplicationBuilder or the setLazyInitialization method on SpringApplication. Alternatively, it can be enabled using the spring.main.lazy-initialization property as shown in the following example:
+
+PropertiesYaml
+spring.main.lazy-initialization=true
+
+
+Run jar file
+----------------------
+
+3
+One of the ways that you can run your spring-boot application from command line is as follows :
+
+1) First go to your project directory in command line [where is your project located ?]
+
+2) Then in the next step you have to create jar file for that, this can be done as
+
+mvnw package [for WINDOWS OS ] or ./mvnw package [for MAC OS] , this will create jar file for our application.
+
+3) jar file is created in the target sub-directory
+
+4)Now go to target sub directory as jar was created inside of it , i.e cd target
+
+5) Now run the jar file in there. Use command java -jar name.jar [ name is the name of your created jar file.]
+
+and there you go , you are done . Now you can run project in browser,
+
+ http://localhost:port_number
+ 
+java -jar path/to/your/jarfile.jar fully.qualified.package.Application 
+ex:
+java -jar cu-connect-notification-1.16.0-SNAPSHOT.jar  com/fis/d1/notification/NotificationApplication
+
+Run Spring Boot app using Maven:
+
+     mvn spring-boot:run
+	 
+
+Versioning Approaches for RESTful Services
+-------------------------------------------------
+URI Versioning : 
+    
+
+Basic approach to versioning is to create a completely different URI for the new service. Example implementation is shown below.
+
+Examples
+
+http://localhost:8080/v1/person
+http://localhost:8080/v2/person
+@RestController
+public class StudentVersioningController {
+
+  @GetMapping("v1/student")
+  public StudentV1 studentV1() {
+    return new StudentV1("Bob Charlie");
+  }
+
+  @GetMapping("v2/student")
+  public StudentV2 studentV2() {
+    return new StudentV2(new Name("Bob", "Charlie"));
+  }
+
+http://localhost:8080/v1/person
+
+
+Request Parameter versioning:
+Next approach to versioning is to use the request parameter to differentiate versions.
+
+Examples
+
+http://localhost:8080/person/param?version=1
+http://localhost:8080/person/param?version=2
+Implementations are shown below:
+
+  @GetMapping(value = "/student/param", params = "version=1")
+  public StudentV1 paramV1() {
+    return new StudentV1("Bob Charlie");
+  }
+
+  @GetMapping(value = "/student/param", params = "version=2")
+  public StudentV2 paramV2() {
+    return new StudentV2(new Name("Bob", "Charlie"));
+  }
+http://localhost:8080/person/param?version=1
+
+(Custom) Headers versioning  :
+
+The third approach to versioning is to use a Request Header to differentiate the versions.
+
+Examples
+
+http://localhost:8080/person/header
+headers=[X-API-VERSION=1]
+http://localhost:8080/person/header
+headers=[X-API-VERSION=2]
+Implementations are shown below:
+
+  @GetMapping(value = "/student/header", headers = "X-API-VERSION=1")
+  public StudentV1 headerV1() {
+    return new StudentV1("Bob Charlie");
+  }
+
+  @GetMapping(value = "/student/header", headers = "X-API-VERSION=2")
+  public StudentV2 headerV2() {
+    return new StudentV2(new Name("Bob", "Charlie"));
+  }
+
+
+https://www.programinjava.com/2018/05/implementation-of-swagger-in-spring-boot.html
+What is Swagger  ?
+Swagger is an open source software framework backed by a large ecosystem of tools that helps developers design, build, document, and consume RESTful Web services.Wikipedia
+
+<!-- added for swagger -->
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>2.7.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+			<version>2.7.0</version>
+		</dependency>
+		<!-- swagger added end -->
+		
+SwaggerConfig.java
+package com.programinjava.learn.config;
+
+
+
+import static com.google.common.base.Predicates.or;
+import static springfox.documentation.builders.PathSelectors.regex;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+import com.google.common.base.Predicate;
+
+import springfox.documentation.builders.ApiInfoBuilder;
+import springfox.documentation.builders.PathSelectors;
+import springfox.documentation.builders.RequestHandlerSelectors;
+import springfox.documentation.service.ApiInfo;
+import springfox.documentation.spi.DocumentationType;
+import springfox.documentation.spring.web.plugins.Docket;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
+
+@Configuration
+@EnableSwagger2
+public class SwaggerConfig {                                    
+	@Bean
+	public Docket api() { 
+		return new Docket(DocumentationType.SWAGGER_2)  
+				.select()                                  
+				.apis(RequestHandlerSelectors.any())              
+				.paths(PathSelectors.any())                          
+				.build();                                           
+	}
+	
+	private Predicate<String> postPaths() {
+		return or(regex("/api/**"));       // resources path starting with 
+	}
+
+	private ApiInfo apiInfo() {
+		return new ApiInfoBuilder().title("Program in java APIs")
+				.description("Program in java APIs reference for developers")
+				.termsOfServiceUrl("https://www.programinjava.com")
+				.contact("admin@programinjava.com").license("Free License")
+				.licenseUrl("admin@programinjava.com").version("1.0").build();
+	}
+}
+
+
+@SuppressWarnings("unchecked")
+private Predicate<String> paths() {
+  return or(PathSelectors.regex("/api/v1/models.*"),
+       PathSelectors.regex("/api/v1/search.*"),
+       PathSelectors.regex("/api/v1/generators.*"),
+       PathSelectors.regex("/api/v1/attachments.*"));
+}
+
+test url: http://localhost:8080/swagger-ui.html
+
+Exceptions: 
+
+-----------
+
+https://www.geeksforgeeks.org/spring-boot-exception-handling/
+
+
+
+Spring Data Commons project provides the following interfaces:
+-----------------------------------------------------------------------
+Repository<T, ID extends Serializable> interface
+CrudRepository<T, ID extends Serializable> interface
+PagingAndSortingRepository<T, ID extends Serializable> interface
+QueryDslPredicateExecutor interface
+
+
+Spring Data Repository
+----------------------------------
+Spring Data JPA provides three repositories are as follows:
+
+CrudRepository: It offers standard create, read, update, and delete It contains method like findOne(), findAll(), save(), delete(), etc.
+PagingAndSortingRepository: It extends the CrudRepository and adds the findAll methods. It allows us to sort and retrieve the data in a paginated way.
+JpaRepository: It is a JPA specific repository It is defined in Spring Data Jpa. It extends the both repository CrudRepository and PagingAndSortingRepository. It adds the JPA-specific methods, like flush() to trigger a flush on the persistence context.
+
+
+https://www.geeksforgeeks.org/spring-boot-jparepository-with-example/ 
+https://zetcode.com/all/#springboot
+
+Spring Boot banner
+Spring Boot banner is a text message that is displayed at the start of a Spring Boot application.
+Turning banner off
+The banner can be disabled using configuration settings or programatically.
+
+spring.main.banner-mode=off
+
+We can turn off the banner with the spring.main.banner-mode property.
+
+SPRING_MAIN_BANNER-MODE=off
+It is also possible to disable the banner with the SPRING_MAIN_BANNER-MODE environment variable.
+
+new SpringApplicationBuilder(MyApplication.class)
+    .bannerMode(Banner.Mode.OFF)
+    .run(args)
+
+var app = new SpringApplication(Application.class);
+app.setBannerMode(Banner.Mode.OFF);
+app.run(args);
+Programatically, it is possible to turn off the banner with SpringApplicationBuilder or SpringApplication.
+
+Spring Boot custom banner
+The banner can be specified in text file or in an image file. The default name for a banner is banner.txt or banner.(png|jpg|gif). It image is automatically transformed into ASCII. The default location of banner files is src/main/resources.
+
+spring.banner.location=classpath:custom-banner.txt
+spring.banner.image.location=classpath:custom-banner.png
+The default location of a text file banner can be configured with the spring.banner.location property and the default location of the image banner is configured with the spring.banner.image.location.
+
+Spring Boot basic annotations
+-----------------------------------
+
+Spring is a popular Java application framework for creating enterprise applications. Spring Boot is the next step in evolution of Spring framework. It helps create stand-alone, production-grade Spring based applications with minimal effort. It does not use XML configurations anymore and implements the convention over configuration principle.
+
+Annotation is a form of metadata which provides data about a program that is not part of the program itself. Annotations do not have direct effect on the operation of the code they annotate.
+
+
+@Bean - indicates that a method produces a bean to be managed by Spring.
+@Service - indicates that an annotated class is a service class.
+@Repository - indicates that an annotated class is a repository, which is an abstraction of data access and storage.
+@Configuration - indicates that a class is a configuration class that may contain bean definitions.
+@Controller - marks the class as web controller, capable of handling the requests.
+@RequestMapping - maps HTTP request with a path to a controller method.
+@Autowired - marks a constructor, field, or setter method to be autowired by Spring dependency injection.
+@SpringBootApplication - enables Spring Boot autoconfiguration and component scanning.
+
+https://www.codejava.net/frameworks/spring-boot/spring-data-jpa-custom-repository-example
+
+https://qaautomation.expert/2021/07/26/integration-testing-of-springboot-using-restassured/
+
+
+What is actuator in spring boot?
+An actuator is one of the best parts of spring boot which consists of production-ready features to help you monitor and manage your application. 
+
+With the help of an actuator, you can monitor what is happening inside the running application.
+Actuator dependency figures out the metrics and makes them available as a new endpoint in your application and retrieves all required information from the web. You can identify beans, the health status of your application, CPU usage, and many more with the actuator. By using @Endpoint annotation, you can create a custom endpoint.
+
+
+https://howtodoinjava.com/spring-boot2/resttemplate/spring-restful-client-resttemplate-example/
+4. HTTP POST
+The available methods for consuming POST APIs are:
+
+postForObject(url, request, classType) – POSTs the given object to the URL and returns the representation found in the response as given class type.
+postForEntity(url, request, responseType) – POSTs the given object to the URL and returns the response as ResponseEntity.
+postForLocation(url, request, responseType) – POSTs the given object to the URL and returns the value of the Location header.
+exchange(url, requestEntity, responseType)
+execute(url, httpMethod, requestCallback, responseExtractor)
+
+https://www.dariawan.com/tutorials/spring/documenting-spring-boot-rest-api-springdoc-openapi-3/ 
+https://javagyansite.com/2020/02/14/spring-data-jpaspring-bootmysql/
+
+https://github.com/RameshMF/spring-boot-tutorial -- good one
