@@ -1,0 +1,176 @@
+java1.8
+-----------------
+http://stevenmwesigwa.com/blog/3/how-to-use-getter-and-setter-annotations-with-project-lombok
+https://javabydeveloper.com/lombok-nonnull-annotation-examples/
+
+Introduction To Project Lombok:
+
+Project Lombok is a Java library that will be plugged into your code editor which automatically generates Java boilerplate byte code for you based on a couple of annotations.
+
+Some of the popular annotations include @Getter, @Setter, @EqualsAndHashCode, @NoArgsConstructor, @Builder, etc.
+
+
+ <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+    </dependency>
+
+Lombok @Getter @Setter and lazy getters
+Lombok @ToString
+Lombok @EqualsAndHashCode
+Lombok @AllArgsConstructor
+Lombok @NoArgsConstructor
+Lombok @RequiredArgsConstructor
+Lombok @NonNull
+Lombok @Value
+
+
+1.Annotating Fields with @Getter and @Setter
+Annotate any field with Lombok’s @Getter and @Setter to generate the default getter/setter automatically by Lombok.
+The generated getter/setter method will be public  by default. 
+
+public class User {
+  @Getter
+  private Long id;
+  
+  @Setter
+  private String username;
+  
+  @Getter @Setter
+  private String email;
+  
+  @Getter @Setter
+  private LocalDate lastUpdated;
+}
+
+2. You can also put a @Getter and/or @Setter annotation on a class. In this case
+
+* getters and setters will be generated for all non-static fields.
+* No setters and getters generate for static fields.
+* No setters will be generated for final fields.
+
+@Getter
+@Setter
+public class User {
+  private Long id;
+  private String username;
+  private LocalDate lastUpdated;
+  // no getter setter generated for static fields
+  public static int maxAge = 40;
+  // only getters will be generated for final fields
+  public final int minAge = 20;
+}
+
+3. Changing access level for generated getters and setters
+
+By default generated getter/setter method will be public . To change access modifier of generated getters and setters,
+ you need to specify AccessLevel as shown in the following example. The legal access levels are PUBLIC, PROTECTED, PACKAGE, and PRIVATE.
+
+@Getter
+@Setter
+public class User {
+  @Setter(AccessLevel.PRIVATE)
+  private Long id;
+  @Getter(AccessLevel.PROTECTED)
+  private String username;
+  
+  @Getter(AccessLevel.PACKAGE)
+  private String email;
+  @Getter(AccessLevel.PUBLIC)
+  @Setter(AccessLevel.PRIVATE)
+  private LocalDate lastUpdated;
+}
+
+4. Exclude Or disable generating getters/setters
+@Getter
+@Setter
+public class User {
+  @Setter(AccessLevel.NONE)
+  private Long id;
+  
+  @Getter(AccessLevel.NONE)
+  private String username;
+  
+  private String email;
+  
+  private LocalDate lastUpdated;
+}
+
+@RequiredArgsConstructor
+Generates a constructor with required arguments. Required arguments are uninitialized final fields and fields with constraints such as @NonNull. Default access modifier is public.
+
+1. What is Lombok Data annotation?
+LOMBOK DATA ANNOTATION (@DATA) GENERATES GETTERS FOR ALL FIELDS, A USEFUL TOSTRING METHOD, AND HASHCODE AND EQUALS IMPLEMENTATIONS 
+THAT CHECK ALL NON-TRANSIENT FIELDS. WILL ALSO GENERATE SETTERS FOR ALL NON-FINAL FIELDS, AS WELL AS A CONSTRUCTOR. 
+A @DATA ANNOTATIONS EQUIVALENT TO COMBINATION OF @GETTER @SETTER @REQUIREDARGSCONSTRUCTOR @TOSTRING @EQUALSANDHASHCODE
+
+ @Data generates all the boilerplate that is normally associated with simple POJOs (Plain Old Java Objects) and beans:
+
+getter methods for all fields,
+setter methods for all non-final fields,
+ appropriate toString(),
+appropriate equals() and
+hashCode() implementations that involve the fields of the class,
+and a constructor that initializes all final fields,
+as well as all non-final fields with no initializer that have been marked with @NonNull, in order to ensure the field is never null.
+@Data annotation alone not provide support for ignoring fields from generating getters/setters or toString or equals and hashCode methods. Following example demonstrates how to exclude fields when you are using @Data annotation.
+
+@Data
+public class User4 {
+  @Setter(value = AccessLevel.NONE)
+  private Long id;
+  @Getter(value = AccessLevel.NONE)
+  private String username;
+  
+  @ToString.Exclude
+  private boolean active;
+  
+  @EqualsAndHashCode.Exclude
+  @ToString.Exclude
+  private int role;
+}
+
+
+https://java2blog.com/java-8-interview-questions/
+
+https://java2blog.com/java-8-stream
+
+
+What is lambda expression?
+Lambda expression is anonymous function which have set of parameters and a lambda (->) and a function body .You can call it function without name.
+ 
+(Argument List) ->{expression;} or
+(Argument List) ->{statements;}
+
+
+Difference between Stream’s findFirst() and findAny()?
+findFirst will always return the first element from the stream whereas findAny is allowed to choose any element from the stream.
+findFirst has deterministic behavior whereas findAny is nondeterministic behavior.
+
+What are main advantages of using Java 8?
+More compact code
+Less boiler plate code
+More readable and reusable code
+More testable code
+Parallel operations
+
+
+What are new features which got introduced in Java 8?
+There are lots of new features which were added in Java 8. Here is the list of important features:
+
+Lambda Expression
+Stream API
+Default methods in the interface
+Functional Interface
+Optional
+Method reference
+Date API
+Nashorn, JavaScript Engine
+
+Some Built-in Java Functional Interfaces
+Functional interfaces are included in Java SE 8 with Lambda expressions and Method references in order to make code more readable, clean, and straightforward.
+Runnable –> This interface only contains the run() method.
+Comparable –> This interface only contains the compareTo() method.
+ActionListener –> This interface only contains the actionPerformed() method.
+Callable –> This interface only contains the call() method.
+
